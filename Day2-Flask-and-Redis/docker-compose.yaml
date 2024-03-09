@@ -1,0 +1,19 @@
+version: '3'
+services:
+   flask-app:
+     image: flask-app:latest
+     ports:
+     - "8083:5000" 
+     environment:
+      - PORT=8083
+      - REDIS_HOST=cache
+      - REDIS_PASSWORD=Supersecret
+     depends_on:
+       - cache
+
+   cache:
+      image: "bitnami/redis:7.2.4"
+      environment:
+       - REDIS_PASSWORD=Supersecret
+      ports:
+        - "6379:6379"
