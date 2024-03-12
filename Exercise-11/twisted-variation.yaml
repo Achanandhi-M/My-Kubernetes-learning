@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: twisted-container-1
+   labels:
+     purpose: curosity 
+spec:
+  containers:
+    - name: nginx-container
+      image: bitnami/nginx
+      env:
+        - name: NGINX_HTTP_PORT_NUMBER
+          value: "8085"
+      ports:
+       - containerPort: 8085
+    - name: bash-container
+      image: bash 
+      command: [ "bash", "-c", "sleep 5" ]
+
+  #restartPolicy: Never

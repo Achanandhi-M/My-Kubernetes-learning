@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+   name: port-forwarding
+   labels:
+    purpose: testing
+spec:
+ containers:
+   - name: nginx-container-testing
+     image: bitnami/nginx
+     env:
+       - name: NGINX_HTTP_PORT_NUMBER
+         value: "8008"
+     ports:
+       - containerPort: 8008
